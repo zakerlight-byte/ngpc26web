@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#153b2d">
+  <meta name="description" content="NGPC’26 delegate portal. Find your committee allocation and welcome page.">
+  <title>NGPC’26 — Delegate Portal</title>
+  <link rel="icon" href="assets/ngpc2026-logo.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="privacy.css">
+  <script defer src="countryProfiles.js"></script>
+  <script defer src="committeeInfo.js"></script>
+  <script defer src="app.js"></script>
+  <script defer src="globe-scroll.js"></script>
+  <script defer src="globe-game.js"></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="NGPC 2026 home">
+        <img class="brand-logo" src="assets/ngpc2026-logo.jpg" alt="NGPC’26 official logo">
+        <span class="brand-copy"><strong>NGPC’26</strong><small>New Indian Model School · Dubai</small></span>
+      </a>
+      <a class="instagram-link" href="https://www.instagram.com/ngpc2026/" target="_blank" rel="noreferrer">
+        <span class="live-dot" aria-hidden="true"></span> Follow the conference <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+
+    <main id="home">
+      <section class="hero" id="login-view" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <button class="globe-spin-button" id="globe-spin-button" type="button" aria-label="Spin the globe to uncover a secret game" title="Try spinning the globe"><span class="sr-only">Spin the globe to uncover a secret game.</span></button>
+          <p class="eyebrow"><span class="eyebrow-line"></span> New Indian Model School · Dubai</p>
+          <h1 id="hero-title">The world is<br><em>at the table.</em></h1>
+          <p class="intro">Welcome to NGPC’26. Find your place, meet your committee, and get ready to make your voice count.</p>
+          <div class="hero-tags" aria-label="Conference values"><span>Diplomacy</span><i aria-hidden="true"></i><span>Debate</span><i aria-hidden="true"></i><span>Leadership</span></div>
+          <div class="event-facts" aria-label="Conference details">
+            <div><span class="fact-label">Conference</span><strong>23—24 October 2026</strong></div>
+            <div><span class="fact-label">Location</span><strong>Dubai, United Arab Emirates</strong></div>
+          </div>
+        </div>
+
+        <div class="login-card">
+          <div class="card-topline"><span>DELEGATE ACCESS</span><span class="card-seal" aria-hidden="true">26</span></div>
+          <h2>Find your<br>delegation.</h2>
+          <p class="card-description">Enter the name used for your NGPC’26 registration.</p>
+          <form id="login-form" novalidate>
+            <label for="delegate-name">Your name</label>
+            <div class="input-wrap">
+              <input id="delegate-name" name="delegate-name" type="text" autocomplete="name" placeholder="e.g. Aisha Ahmed" required>
+              <span class="input-arrow" aria-hidden="true">↗</span>
+            </div>
+            <p class="error-message" id="login-error" role="status" aria-live="polite"></p>
+            <button class="primary-button" type="submit">Continue to your portal <span aria-hidden="true">→</span></button>
+          </form>
+          <p class="privacy-note"><span aria-hidden="true">○</span> No password needed. Your name identifies a record; it does not verify who you are.</p>
+        </div>
+      </section>
+
+      <section class="lower-strip" aria-label="Conference overview">
+        <p class="strip-title">A place for every perspective.</p>
+        <nav class="committee-list" aria-label="Explore committees">
+          <button type="button" data-committee="coldwar">Cold War Crisis Cabinet</button><i></i>
+          <button type="button" data-committee="unesco">UNESCO</button><i></i>
+          <button type="button" data-committee="unep">UNEP</button><i></i>
+          <button type="button" data-committee="unhrc">UNHRC</button><i></i>
+          <button type="button" data-committee="uncsw">UNCSW</button>
+        </nav>
+      </section>
+
+      <dialog class="committee-dialog" id="committee-dialog" aria-labelledby="dialog-title">
+        <button class="dialog-close" type="button" aria-label="Close committee details">×</button>
+        <p class="eyebrow"><span class="eyebrow-line"></span> NGPC’26 COMMITTEE</p>
+        <h2 id="dialog-title"></h2>
+        <p class="dialog-chairs" id="dialog-chairs"></p>
+        <p class="dialog-description" id="dialog-description"></p>
+        <a class="outline-button hidden" id="dialog-guide">Read background guide <span aria-hidden="true">↗</span></a>
+      </dialog>
+
+      <section class="dashboard hidden" id="dashboard-view" aria-live="polite" aria-labelledby="welcome-title">
+        <div class="dashboard-heading">
+          <div><p class="eyebrow"><span class="eyebrow-line"></span> NGPC’26 · DELEGATE PORTAL</p><h1 id="welcome-title">Welcome, <em id="welcome-name"></em></h1><p class="intro">Your seat is waiting. Here’s your conference allocation.</p></div>
+          <button class="text-button" id="switch-delegate" type="button">Switch name <span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="allocation-card">
+          <div class="allocation-label">YOUR COMMITTEE</div>
+          <div class="allocation-content"><span class="allocation-number" aria-hidden="true">01</span><div><h2 id="committee-name"></h2><p id="grade-line"></p></div><span class="allocation-star" aria-hidden="true">✳</span></div>
+          <div class="allocation-footer"><span>NGPC’26 · DUBAI</span><span>23—24 OCTOBER 2026</span></div>
+        </div>
+        <section class="committee-briefing" aria-labelledby="committee-briefing-title">
+          <div class="briefing-copy"><p class="eyebrow"><span class="eyebrow-line"></span> YOUR COMMITTEE</p><h2 id="committee-briefing-title"></h2><p id="committee-description"></p><p class="chair-line" id="committee-chairs"></p></div>
+          <a class="guide-download" id="committee-guide" download><span class="guide-icon" aria-hidden="true">PDF</span><span><strong>Background guide</strong><small>Open or save your committee’s guide</small></span><span aria-hidden="true">↗</span></a>
+        </section>
+        <section class="country-card" aria-labelledby="country-name">
+          <div class="country-photo"><img id="country-flag" alt="" loading="lazy"><span id="historic-label" class="historic-label hidden">HISTORICAL DELEGATION</span><a id="country-photo-credit" class="country-photo-credit hidden" target="_blank" rel="noreferrer">Photo · Wikimedia Commons ↗</a></div>
+          <div class="country-info">
+            <div class="country-kicker">YOUR COUNTRY / PORTFOLIO</div>
+            <h2 id="country-name"></h2>
+            <div class="country-insights">
+              <article><span>STRENGTHS</span><p id="country-strength"></p></article>
+              <article><span>CHALLENGES TO CONSIDER</span><p id="country-challenge"></p></article>
+            </div>
+            <p class="country-context" id="country-context">These are starting points for debate, not judgments. Check your committee agenda and your country’s current policy.</p>
+          </div>
+        </section>
+        <section class="mun-toolkit" aria-labelledby="toolkit-title">
+          <div class="toolkit-heading"><p class="eyebrow"><span class="eyebrow-line"></span> YOUR QUICK GUIDE</p><h2 id="toolkit-title">MUN, in brief.</h2><p>Know the format. Then check the conference rules for your committee.</p></div>
+          <div class="toolkit-grid">
+            <article><span class="toolkit-number">01</span><h3>GSL</h3><p>The General Speakers List is the main queue for formal speeches. Share your delegation’s position, explain why it matters, then offer one practical next step.</p><p class="toolkit-coach"><strong>Try this:</strong> “Honourable Chair, [country] believes… We are concerned because… We encourage the committee to…”</p><p class="toolkit-tip"><strong>Confidence tip:</strong> Write your first two sentences, breathe before you begin, and look up once during the speech. You do not need to sound perfect; make one clear point.</p></article>
+            <article><span class="toolkit-number">02</span><h3>Position paper</h3><p>A short paper explaining the issue, how it affects people, your country’s position, and the solutions it supports. Keep it tied to your committee’s actual agenda.</p><p class="toolkit-coach"><strong>Build it:</strong> 1) issue and impact, 2) your country’s policy or past action, 3) two or three realistic proposals. Add reliable sources.</p><p class="toolkit-tip"><strong>Confidence tip:</strong> Turn each section into a few bullet points first. Your paper is a preparation tool, not a test of fancy wording.</p></article>
+            <article><span class="toolkit-number">03</span><h3>Draft resolution</h3><p>A group plan the committee negotiates. Preambulatory clauses explain the problem and relevant context; operative clauses describe specific actions.</p><p class="toolkit-coach"><strong>Make it useful:</strong> Say who will act, what they will do, and how. Start with a few achievable ideas, then invite other delegates to improve them.</p><p class="toolkit-tip"><strong>Confidence tip:</strong> You can contribute by researching, writing one clause, asking a question, or helping the group agree. You do not have to lead every conversation.</p></article>
+          </div>
+          <div class="toolkit-note"><span>CAUCUSES</span><p>In a moderated caucus, the chair recognizes short speeches on one focused question. In an unmoderated caucus, delegates talk freely, find partners, and write together. Ask the chair to clarify the rules if you are unsure; that is completely okay.</p></div>
+        </section>
+        <div class="dashboard-bottom"><div><span class="fact-label">Next up</span><strong>Prepare for committee.</strong><p>Review your topic and keep an eye on conference updates.</p></div><div class="dashboard-actions"><a class="whatsapp-button hidden" id="committee-whatsapp" target="_blank" rel="noopener noreferrer"><span class="whatsapp-icon" aria-hidden="true">◉</span><span id="whatsapp-label">Join your committee WhatsApp group</span><span aria-hidden="true">↗</span></a><a class="outline-button" href="https://www.instagram.com/ngpc2026/" target="_blank" rel="noreferrer">NGPC on Instagram <span aria-hidden="true">↗</span></a></div></div>
+        <p class="privacy-note dashboard-note">This portal uses name-only lookup. It is not secure authentication and should not be used for confidential information.</p>
+      </section>
+      <dialog class="chair-access-dialog" id="chair-access-dialog" aria-labelledby="chair-dialog-title">
+        <button class="dialog-close" id="close-chair-access" type="button" aria-label="Close chair access">×</button>
+        <div class="chair-access-card">
+          <p class="eyebrow"><span class="eyebrow-line"></span> NGPC’26 · CHAIR ACCESS</p>
+          <h2 id="chair-dialog-title">Your committee<br>starts here.</h2>
+          <form id="chair-login-form" novalidate>
+            <label for="chair-committee">Committee</label>
+            <select id="chair-committee" name="committee" required>
+              <option value="" selected disabled>Select your committee</option>
+              <option value="coldwar">Cold War Crisis Cabinet</option><option value="unesco">UNESCO</option><option value="unhrc">UNHRC</option><option value="unep">UNEP</option><option value="uncsw">UNCSW</option>
+            </select>
+            <span class="chair-field-label" id="chair-name-label">Your name</span>
+            <div class="chair-name-picker" id="chair-name-picker" role="group" aria-labelledby="chair-name-label" aria-describedby="chair-name-help"><span id="chair-name-help">Choose your committee first.</span></div>
+            <label for="chair-key">Shared chair key</label>
+            <input id="chair-key" name="key" type="password" autocomplete="current-password" placeholder="Enter the key shared with your co-chair" required>
+            <p class="error-message" id="chair-error" role="status" aria-live="polite"></p>
+            <button class="primary-button" type="submit">Open chair portal <span aria-hidden="true">→</span></button>
+          </form>
+          <p class="chair-key-note">Chair access is a convenience for non-confidential committee resources.</p>
+        </div>
+      </dialog>
+      <dialog class="game-dialog" id="game-dialog" aria-labelledby="game-title">
+        <button class="game-close" id="game-close" type="button" aria-label="Close game">×</button>
+        <div class="game-shell">
+          <p class="eyebrow"><span class="eyebrow-line"></span> A LITTLE SIDE QUEST</p>
+          <h2 id="game-title">2048</h2>
+          <p class="game-intro">Join the numbers. Reach <strong>2048</strong> to win.</p>
+          <div class="game-score-row"><span>YOUR SCORE</span><strong id="game-score">0</strong></div>
+          <div class="game-board" id="game-board" role="grid" aria-label="2048 game board" tabindex="0"></div>
+          <div class="game-tools"><button class="game-new-button" id="game-new" type="button">New game <span aria-hidden="true">↻</span></button><span class="game-hint">Use arrow keys, WASD, or swipe.</span></div>
+          <p class="game-status" id="game-status" role="status" aria-live="polite">Make a move to begin.</p>
+          <div class="game-win hidden" id="game-win" role="status" aria-live="polite"><div class="win-spark" aria-hidden="true">✦</div><p>YOU MADE IT</p><h3>2048</h3><span>A little secret from the NGPC’26 team.</span><button class="game-play-again" id="game-play-again" type="button">Play again</button></div>
+        </div>
+      </dialog>
+      <section class="chair-dashboard hidden" id="chair-dashboard" aria-live="polite">
+        <div class="dashboard-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> NGPC’26 · CHAIR PORTAL</p><h1>Welcome, <em id="chair-welcome"></em></h1><p class="intro" id="chair-committee-title"></p></div><button class="text-button" id="chair-logout" type="button">Back to delegate site <span aria-hidden="true">↗</span></button></div>
+        <div class="chair-dashboard-grid">
+          <article class="chair-resource-card"><span class="toolkit-number">01 · PREPARE</span><h2>Committee background</h2><p>Review your committee’s agenda, context, and background guide before the session.</p><a class="primary-button chair-card-link" id="chair-guide" target="_blank" rel="noreferrer">Open background guide <span aria-hidden="true">↗</span></a></article>
+          <article class="chair-resource-card"><span class="toolkit-number">02 · CONNECT</span><h2>Committee delegates</h2><p>Use your committee group to share updates and coordinate with delegates.</p><a class="primary-button chair-card-link" id="chair-whatsapp" target="_blank" rel="noopener noreferrer">Open WhatsApp group <span aria-hidden="true">↗</span></a></article>
+          <article class="chair-resource-card"><span class="toolkit-number">03 · RUN SESSION</span><h2>Gavelling</h2><p>Open Gavelling for speakers lists, motions, roll call, and voting during committee.</p><a class="primary-button chair-card-link" href="https://www.gavelling.com/" target="_blank" rel="noreferrer">Go to Gavelling <span aria-hidden="true">↗</span></a></article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer"><span>NGPC’26 · DUBAI</span><span>Delegates, ready your voices.</span><span class="footer-end"><button class="quiet-chair-trigger" id="open-chair-access" type="button" aria-label="Open chair sign-in" title="Chair sign-in" aria-haspopup="dialog">◆</button><a href="https://www.instagram.com/ngpc2026/" target="_blank" rel="noreferrer">@ngpc2026 ↗</a></span></footer>
+  </div>
+</body>
+</html>

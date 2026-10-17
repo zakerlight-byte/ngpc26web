@@ -1,0 +1,6 @@
+/* Chair sign-in in the legacy source relied on browser-side keys, so it is not exposed in this upload copy. */
+#open-chair-access,
+#chair-access-dialog,
+#chair-dashboard {
+  display: none !important;
+}
